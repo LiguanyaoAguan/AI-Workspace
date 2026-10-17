@@ -20,6 +20,10 @@ __pycache__/
 # 记忆备份包（含私人记忆，只留在本机）
 .ai-workspace/mnemon-backups/
 
+# 插件安装包与测试会话备份（本机运行时数据）
+.ai-workspace/plugins/
+.ai-workspace/session-backup*/
+
 # 凭据（永远不要提交）
 .env
 *.key
