@@ -1,0 +1,20 @@
+# 系统元数据
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# 运行时数据：基线、日志、快照、操作记录
+.ai-workspace/state.json
+.ai-workspace/changes.log
+.ai-workspace/backup/*
+!.ai-workspace/backup/.gitkeep
+.ai-workspace/ops/*
+!.ai-workspace/ops/.gitkeep
+
+# 凭据（永远不要提交）
+.env
+*.key
+*.pem
+token*
