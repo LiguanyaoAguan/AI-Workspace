@@ -13,6 +13,10 @@ __pycache__/
 .ai-workspace/ops/*
 !.ai-workspace/ops/.gitkeep
 
+# 私人长期记忆（dsh-mnemon，本地专用，绝不提交）
+.ai-workspace/mnemon/
+.ai-workspace/mnemon/**
+
 # 凭据（永远不要提交）
 .env
 *.key
