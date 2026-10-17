@@ -26,6 +26,7 @@ STATE_VERSION = 1
 TOOL_NAME = "快照.py"
 TOOL_VERSION = "2.0"
 STORE_DIR = ".ai-workspace"
+EXCLUDED_TOP = (STORE_DIR, ".git")
 BACKUP_DIR = "backup"
 OPS_DIR = "ops"
 LOG_FILE = "changes.log"
@@ -173,6 +174,8 @@ def resolve_target(root, raw):
         raise ToolError("不能对工作区根目录本身操作")
     if within(resolved, store_dir(root)):
         raise ToolError("禁止对备份区本身操作：" + text)
+    if within(resolved, root / ".git") or resolved == root / ".git":
+        raise ToolError("禁止对 .git 目录操作：" + text)
     return resolved
 
 
@@ -222,7 +225,7 @@ def scan_workspace(root):
         if not path.is_file():
             continue
         rel = rel_of(path, root)
-        if rel.split("/")[0] == STORE_DIR:
+        if rel.split("/")[0] in EXCLUDED_TOP:
             continue
         if is_metadata_path(rel):
             continue
@@ -294,7 +297,8 @@ def all_ops(root):
 
 def migrate_metadata(root, state):
     """从基线移除系统元数据文件（仅 .DS_Store），其他条目不动。"""
-    removed = [rel for rel in state.get("files", {}) if is_metadata_path(rel)]
+    removed = [rel for rel in state.get("files", {})
+               if is_metadata_path(rel) or rel == ".git" or rel.startswith(".git/")]
     for rel in removed:
         state["files"].pop(rel, None)
     if removed:
