@@ -1,0 +1,23 @@
+{
+  "asr": {
+    "backend": "local",
+    "local": {
+      "num_threads": 4,
+      "language": "zh",
+      "use_itn": true
+    },
+    "cloud": {
+      "base_url": "https://api.siliconflow.cn/v1",
+      "api_key": "",
+      "api_key_env": "SILICONFLOW_API_KEY",
+      "model": "FunAudioLLM/SenseVoiceSmall",
+      "timeout": 300
+    }
+  },
+  "model_dir": "/storage/emulated/0/AI-Workspace/.ai-workspace/vtc-models",
+  "output_dir": "/storage/emulated/0/AI-Workspace/04_素材库/视频转写",
+  "keep_audio": false,
+  "ytdlp_extra_args": [],
+  "cookies_file": "",
+  "proxy": ""
+}
