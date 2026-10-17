@@ -17,6 +17,9 @@ __pycache__/
 .ai-workspace/mnemon/
 .ai-workspace/mnemon/**
 
+# 记忆备份包（含私人记忆，只留在本机）
+.ai-workspace/mnemon-backups/
+
 # 凭据（永远不要提交）
 .env
 *.key
